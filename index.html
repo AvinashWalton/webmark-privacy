@@ -1,55 +1,969 @@
-# WebMark Privacy Policy
 
-**Last updated:** October 14, 2026
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
 
-## Overview
+  <title>Privacy Policy | WebMark</title>
+  <meta name="description" content="Learn how WebMark handles webpage text, highlights, notes, browser storage, permissions and your privacy.">
+  <meta name="robots" content="index, follow">
 
-WebMark is a browser extension designed to help users highlight text on webpages, save notes, and manage their highlights.
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090d19;
+      --surface: #101729;
+      --surface-2: #151e33;
+      --border: #27334b;
+      --text: #edf2ff;
+      --muted: #a0aec6;
+      --accent: #a5b4fc;
+      --accent-2: #818cf8;
+      --green: #6ee7b7;
+      --max-width: 1160px;
+      --radius: 18px;
+    }
 
-WebMark is designed to operate locally in the user's browser without requiring an account or a dedicated backend server.
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-## Information Processed
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 15% 0%, #25255a40, transparent 40%),
+        radial-gradient(ellipse at 90% 20%, #174e6330, transparent 35%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
 
-When you use WebMark, the extension may process the following information to provide its features:
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
 
-- Selected webpage text and information needed to identify and restore a highlight.
-- Highlights and notes created by the user.
-- Extension settings and saved data needed for the dashboard and supported import/export features.
+    a:hover {
+      color: #c7d2fe;
+    }
 
-The extension may access webpage content on supported pages to perform the highlighting functionality requested by the user.
+    button {
+      font: inherit;
+    }
 
-## Local Storage
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin-inline: auto;
+    }
 
-WebMark is designed to store its saved highlights, notes, and related information locally in the browser, using the browser's available storage mechanisms.
+    /* Navigation */
 
-**Do not publish this policy until you have verified that the actual extension code does not transmit this information to any remote server or third party.** Update this section if the implementation behaves differently.
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #090d19e8;
+      border-bottom: 1px solid #ffffff12;
+      backdrop-filter: blur(18px);
+    }
 
-## Data Sharing and Sale
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-WebMark does not intentionally send saved highlights or notes to a WebMark-operated backend as part of its intended local-only design. WebMark does not sell users' saved highlights or notes.
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
 
-This statement does not cover browser-platform services or third-party services that may operate independently; those should be described if applicable.
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      color: #0b1020;
+      background: linear-gradient(135deg, #c4b5fd, #818cf8);
+      box-shadow: 0 5px 24px #818cf830;
+      font-size: 1.15rem;
+      font-weight: 900;
+    }
 
-## User Control and Data Deletion
+    .brand small {
+      display: block;
+      margin-top: -5px;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+    }
 
-Users can manage saved highlights and notes through the extension's available features. Users can remove saved data through the extension or by clearing the relevant browser extension storage, where supported.
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
 
-Exported files are saved wherever the user chooses and are subject to the user's own file-management practices.
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
 
-## Permissions
+    .nav-links a:hover {
+      color: var(--text);
+    }
 
-WebMark requests browser permissions needed for its features. These permissions may allow it to access supported webpages, store extension data, and perform other declared actions. Users can review or revoke extension permissions through Microsoft Edge settings, although revoking required permissions may affect functionality.
+    .nav-cta {
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      color: var(--text) !important;
+      background: #ffffff08;
+    }
 
-## Children's Privacy
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 12px;
+      color: var(--text);
+      background: var(--surface);
+      cursor: pointer;
+    }
 
-WebMark is not specifically designed to collect personal information from children.
+    /* Hero */
 
-## Changes to This Policy
+    .hero {
+      padding: 86px 0 52px;
+      text-align: center;
+    }
 
-This policy may be updated when WebMark's functionality or data practices change. The latest version will be published on this page.
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border: 1px solid #818cf840;
+      border-radius: 100px;
+      background: #818cf812;
+      color: #c7d2fe;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
 
-## Contact
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px #6ee7b780;
+    }
 
-For questions about this privacy policy, contact:
+    h1 {
+      max-width: 850px;
+      margin: 25px auto 18px;
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      line-height: 1.08;
+      letter-spacing: -3px;
+    }
 
-**Email:** indrasevatechnology@gmail.com
+    .gradient-text {
+      color: #a5b4fc;
+      background: linear-gradient(100deg, #c4b5fd, #818cf8 55%, #67e8f9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .meta-pill {
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #ffffff05;
+      color: #cbd5e1;
+      font-size: 0.8rem;
+    }
+
+    /* Privacy cards */
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 14px 0 54px;
+    }
+
+    .trust-card {
+      padding: 23px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #151e33, #0e1423);
+    }
+
+    .trust-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 15px;
+      border-radius: 13px;
+      background: #818cf81b;
+      font-size: 1.25rem;
+    }
+
+    .trust-card h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+
+    .trust-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    /* Main content */
+
+    .policy-layout {
+      display: grid;
+      grid-template-columns: 265px minmax(0, 1fr);
+      align-items: start;
+      gap: 42px;
+      padding-bottom: 90px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 100px;
+      padding: 20px 15px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #101729b8;
+    }
+
+    .toc-heading {
+      padding: 0 10px 12px;
+      color: #64748b;
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 9px 11px;
+      border-left: 2px solid transparent;
+      border-radius: 0 8px 8px 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .toc a:hover,
+    .toc a.active {
+      border-left-color: var(--accent-2);
+      background: #818cf812;
+      color: #c7d2fe;
+    }
+
+    .policy-content {
+      min-width: 0;
+      padding: 35px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: #101729c9;
+    }
+
+    .intro-note {
+      margin-bottom: 35px;
+      padding: 18px 20px;
+      border: 1px solid #818cf83d;
+      border-radius: 13px;
+      background: #818cf80c;
+      color: #cbd5e1;
+      font-size: 0.93rem;
+    }
+
+    .intro-note strong {
+      color: #c7d2fe;
+    }
+
+    .policy-section {
+      padding: 28px 0;
+      border-bottom: 1px solid #ffffff10;
+      scroll-margin-top: 105px;
+    }
+
+    .policy-section:first-of-type {
+      padding-top: 0;
+    }
+
+    .policy-section:last-of-type {
+      border-bottom: 0;
+    }
+
+    .section-number {
+      display: inline-block;
+      margin-bottom: 5px;
+      color: #818cf8;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    .policy-section h2 {
+      margin: 0 0 13px;
+      font-size: clamp(1.25rem, 3vw, 1.65rem);
+      letter-spacing: -0.5px;
+      line-height: 1.4;
+    }
+
+    .policy-section p,
+    .policy-section li {
+      color: #b3bfd3;
+      font-size: 0.96rem;
+    }
+
+    .policy-section p {
+      margin: 0 0 13px;
+    }
+
+    .policy-section ul {
+      padding-left: 23px;
+      margin: 12px 0;
+    }
+
+    .policy-section li {
+      padding: 4px 0;
+    }
+
+    .policy-section li::marker {
+      color: #818cf8;
+    }
+
+    .inline-code {
+      padding: 3px 7px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #080d18;
+      color: #c4b5fd;
+      font-family: ui-monospace, monospace;
+      font-size: 0.85em;
+    }
+
+    .contact-card {
+      margin-top: 15px;
+      padding: 20px;
+      border: 1px solid #818cf83b;
+      border-radius: 14px;
+      background: linear-gradient(120deg, #818cf815, #67e8f908);
+    }
+
+    .contact-card p {
+      margin-bottom: 5px;
+    }
+
+    /* Footer */
+
+    .footer {
+      border-top: 1px solid var(--border);
+      background: #070b14;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 28px 0;
+    }
+
+    .footer p {
+      margin: 0;
+      color: #77859c;
+      font-size: 0.83rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.84rem;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    .back-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 10;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: #151e33;
+      color: var(--text);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: 0.2s;
+    }
+
+    .back-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 850px) {
+      .policy-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .toc {
+        position: static;
+      }
+
+      .toc nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 3px;
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-card {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        column-gap: 14px;
+        align-items: start;
+      }
+
+      .trust-icon {
+        grid-row: span 2;
+        margin: 0;
+      }
+
+      .policy-content {
+        padding: 25px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 28px, var(--max-width));
+      }
+
+      .nav-inner {
+        min-height: 68px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        padding: 10px 20px 18px;
+        border-bottom: 1px solid var(--border);
+        background: #090d19;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px 5px;
+      }
+
+      .nav-cta {
+        text-align: center;
+      }
+
+      .hero {
+        padding: 64px 0 40px;
+      }
+
+      h1 {
+        letter-spacing: -1.8px;
+      }
+
+      .hero-description {
+        font-size: 0.95rem;
+      }
+
+      .toc nav {
+        grid-template-columns: 1fr;
+      }
+
+      .policy-content {
+        padding: 20px 17px;
+      }
+
+      .policy-section p,
+      .policy-section li {
+        font-size: 0.92rem;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="WebMark home">
+        <span class="brand-mark" aria-hidden="true">W</span>
+        <span>
+          WebMark
+          <small>READ. HIGHLIGHT. REMEMBER.</small>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="navLinks"
+        aria-label="Toggle navigation"
+      >☰ Menu</button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#overview">Overview</a>
+        <a href="#data">Data practices</a>
+        <a href="#permissions">Permissions</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#policy">Read policy ↘</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero container" id="overview">
+      <span class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Transparency matters
+      </span>
+
+      <h1>Your reading.<br><span class="gradient-text">Your data. Your control.</span></h1>
+
+      <p class="hero-description">
+        This policy explains how WebMark processes webpage text,
+        highlights, notes, and browser data when you use the extension.
+      </p>
+
+      <div class="hero-meta">
+        <span class="meta-pill">◷ Last updated: October 14, 2026</span>
+        <span class="meta-pill">▣ Browser extension</span>
+        <span class="meta-pill">◇ Privacy information</span>
+      </div>
+    </section>
+
+    <section class="container trust-grid" aria-label="Privacy principles">
+      <article class="trust-card">
+        <div class="trust-icon" aria-hidden="true">⌂</div>
+        <h3>Local-first design</h3>
+        <p>WebMark is designed to keep saved highlights and notes in browser storage.</p>
+      </article>
+
+      <article class="trust-card">
+        <div class="trust-icon" aria-hidden="true">◈</div>
+        <h3>No account required</h3>
+        <p>The intended experience does not require creating a WebMark user account.</p>
+      </article>
+
+      <article class="trust-card">
+        <div class="trust-icon" aria-hidden="true">✓</div>
+        <h3>Clear permissions</h3>
+        <p>Browser access is used to provide the extension's highlighting features.</p>
+      </article>
+    </section>
+
+    <div class="container policy-layout" id="policy">
+      <aside class="toc" aria-label="Policy contents">
+        <div class="toc-heading">On this page</div>
+        <nav id="tocLinks">
+          <a href="#s1">1. Introduction</a>
+          <a href="#s2">2. Information processed</a>
+          <a href="#s3">3. Local storage</a>
+          <a href="#s4">4. Data sharing</a>
+          <a href="#s5">5. Website content</a>
+          <a href="#s6">6. Permissions</a>
+          <a href="#s7">7. Data retention</a>
+          <a href="#s8">8. Export and import</a>
+          <a href="#s9">9. Your choices</a>
+          <a href="#s10">10. Children's privacy</a>
+          <a href="#s11">11. Policy changes</a>
+          <a href="#contact">12. Contact</a>
+        </nav>
+      </aside>
+
+      <article class="policy-content">
+        <div class="intro-note">
+          <strong>Important:</strong> This policy must accurately reflect the
+          published extension's behavior. The local-storage and no-transmission
+          statements below should only be used if they have been verified against
+          the actual source code and all included dependencies.
+        </div>
+
+        <section class="policy-section" id="s1">
+          <span class="section-number">SECTION 01</span>
+          <h2>Introduction</h2>
+          <p>
+            WebMark is a browser extension designed to help users highlight
+            important text on webpages, create notes, and organize saved
+            highlights through an extension dashboard.
+          </p>
+          <p>
+            This Privacy Policy explains what information may be processed
+            when you use WebMark, how that information is handled, and what
+            choices are available to you.
+          </p>
+        </section>
+
+        <section class="policy-section" id="s2">
+          <span class="section-number">SECTION 02</span>
+          <h2>Information processed</h2>
+          <p>Depending on the features you use, WebMark may process:</p>
+          <ul>
+            <li>Text that you select and choose to highlight.</li>
+            <li>Information needed to locate and restore saved highlights.</li>
+            <li>Notes and other content that you create in the extension.</li>
+            <li>Settings and records needed to operate the dashboard.</li>
+            <li>Data that you choose to import or export.</li>
+          </ul>
+          <p>
+            WebMark may access content on supported webpages to perform
+            highlighting and restoration. It should not access more information
+            than is reasonably necessary for its functionality.
+          </p>
+        </section>
+
+        <section class="policy-section" id="s3">
+          <span class="section-number">SECTION 03</span>
+          <h2>Local storage</h2>
+          <p>
+            WebMark is designed to store saved highlights, notes, and related
+            extension data using browser storage on your device.
+          </p>
+          <p>
+            If the released version operates entirely locally, this information
+            is not transmitted to a WebMark backend. Browser data can be
+            affected by clearing extension storage, removing the extension,
+            browser profile changes, or device failure.
+          </p>
+          <p>
+            Keep an exported backup of important information if the extension's
+            export feature supports the data you need.
+          </p>
+        </section>
+
+        <section class="policy-section" id="s4">
+          <span class="section-number">SECTION 04</span>
+          <h2>Data sharing and sale</h2>
+          <p>
+            WebMark's intended local-first design does not require a WebMark
+            account or a dedicated backend to store highlights and notes.
+          </p>
+          <p>
+            If the implementation does not transmit this information to
+            external services, WebMark does not share or sell that locally
+            stored information through such services.
+          </p>
+          <p>
+            Any analytics, remote services, third-party libraries that transmit
+            data, or future server functionality must be disclosed here before
+            being introduced in a published version.
+          </p>
+        </section>
+
+        <section class="policy-section" id="s5">
+          <span class="section-number">SECTION 05</span>
+          <h2>Webpage content</h2>
+          <p>
+            Highlighting requires interaction with webpage content. The
+            extension may process selected text and surrounding page structure
+            needed to create or restore a highlight.
+          </p>
+          <p>
+            WebMark is not intended to collect passwords, payment details,
+            or unrelated private information. Avoid highlighting sensitive
+            information, particularly on shared devices.
+          </p>
+        </section>
+
+        <section class="policy-section" id="s6">
+          <span class="section-number">SECTION 06</span>
+          <h2>Browser permissions</h2>
+          <p>
+            WebMark requests permissions needed for its implemented features.
+            Depending on the published manifest, these may include:
+          </p>
+          <ul>
+            <li><span class="inline-code">storage</span> for saving extension data.</li>
+            <li><span class="inline-code">activeTab</span> for supported interactions with the active tab, if used.</li>
+            <li><span class="inline-code">downloads</span> for browser download operations, if used.</li>
+            <li>Website access for content scripts that provide highlighting on supported pages.</li>
+          </ul>
+          <p>
+            The actual permission list is determined by the installed version.
+            Users can review WebMark's permissions in their browser settings.
+            Removing permissions that the extension requires may affect its features.
+          </p>
+        </section>
+
+        <section class="policy-section" id="s7">
+          <span class="section-number">SECTION 07</span>
+          <h2>Data retention and deletion</h2>
+          <p>
+            In a local-only implementation, saved information remains in
+            browser storage until it is removed by the user, overwritten,
+            or deleted through browser or extension actions.
+          </p>
+          <p>
+            You may be able to delete individual highlights or notes through
+            the extension. Clearing the relevant extension storage or removing
+            the extension may also remove saved information.
+          </p>
+          <p>
+            The exact behavior depends on the installed version and browser.
+            Exported files may remain on your device until you delete them.
+          </p>
+        </section>
+
+        <section class="policy-section" id="s8">
+          <span class="section-number">SECTION 08</span>
+          <h2>Export and import</h2>
+          <p>
+            If export and import features are available, they allow you to
+            save supported extension data to a file and restore it later.
+          </p>
+          <p>
+            Exported files may contain webpage text, highlights, or notes.
+            Store these files securely and only import files from sources
+            you trust.
+          </p>
+        </section>
+
+        <section class="policy-section" id="s9">
+          <span class="section-number">SECTION 09</span>
+          <h2>Your choices</h2>
+          <ul>
+            <li>Choose what text to highlight and what notes to create.</li>
+            <li>Remove saved items using available extension controls.</li>
+            <li>Review or revoke permissions through browser settings.</li>
+            <li>Remove WebMark if you no longer wish to use it.</li>
+            <li>Manage or delete exported files from your device.</li>
+          </ul>
+        </section>
+
+        <section class="policy-section" id="s10">
+          <span class="section-number">SECTION 10</span>
+          <h2>Children's privacy</h2>
+          <p>
+            WebMark is a general-purpose reading and productivity tool and
+            is not specifically designed to collect children's personal data.
+            If the product's audience or data practices change, this section
+            should be updated to reflect the applicable requirements.
+          </p>
+        </section>
+
+        <section class="policy-section" id="s11">
+          <span class="section-number">SECTION 11</span>
+          <h2>Changes to this policy</h2>
+          <p>
+            This policy may be updated when WebMark's features, permissions,
+            or data practices change. The revised policy will be published
+            on this page with an updated revision date.
+          </p>
+          <p>
+            Please review this page periodically to stay informed about
+            the current privacy practices.
+          </p>
+        </section>
+
+        <section class="policy-section" id="contact">
+          <span class="section-number">SECTION 12</span>
+          <h2>Contact</h2>
+          <p>
+            If you have questions about this Privacy Policy or WebMark's
+            privacy practices, contact the extension maintainer.
+          </p>
+
+          <div class="contact-card">
+            <p><strong>WebMark Privacy Support</strong></p>
+            <p>
+              Email:
+              <a href="mailto:YOUR-CONTACT-EMAIL">
+                YOUR-CONTACT-EMAIL
+              </a>
+            </p>
+            <p>
+              Replace this placeholder with a real support email before
+              publishing the page.
+            </p>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true">W</span>
+          <span>WebMark</span>
+        </a>
+        <p style="margin-top: 10px;">
+          Made for a more organized reading experience.
+        </p>
+        <p style="margin-top: 5px;">
+          © <span id="year"></span> WebMark. All rights reserved.
+        </p>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#overview">Overview</a>
+        <a href="#policy">Privacy policy</a>
+        <a href="#contact">Contact</a>
+        <a href="#top">Back to top ↑</a>
+      </nav>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" type="button"
+    aria-label="Back to top">↑</button>
+
+  <script>
+    "use strict";
+
+    // Update the footer year.
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Responsive navigation.
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "✕ Close" : "☰ Menu";
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰ Menu";
+      });
+    });
+
+    // Back-to-top button.
+    const backTop = document.getElementById("backTop");
+
+    window.addEventListener("scroll", () => {
+      backTop.classList.toggle("visible", window.scrollY > 500);
+    }, { passive: true });
+
+    backTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Highlight the active section in the table of contents.
+    const sections = document.querySelectorAll(
+      ".policy-section[id]"
+    );
+    const tocItems = document.querySelectorAll("#tocLinks a");
+
+    if ("IntersectionObserver" in window) {
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          tocItems.forEach((link) => {
+            const active =
+              link.getAttribute("href") === "#" + entry.target.id;
+
+            link.classList.toggle("active", active);
+
+            if (active) {
+              link.setAttribute("aria-current", "location");
+            } else {
+              link.removeAttribute("aria-current");
+            }
+          });
+        });
+      }, {
+        rootMargin: "-18% 0px -68% 0px",
+        threshold: 0
+      });
+
+      sections.forEach((section) => sectionObserver.observe(section));
+    }
+  </script>
+</body>
+</html>
